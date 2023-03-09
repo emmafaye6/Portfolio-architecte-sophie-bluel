@@ -26,5 +26,13 @@ fetch("http://localhost:5678/api/works")
         .insertAdjacentHTML("beforeend", worksBlock);
     });
 
-    // FILTERS
+    // fetching categories api
+
+    fetch("http://localhost:5678/api/categories")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+      });
   });
