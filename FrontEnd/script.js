@@ -1,3 +1,5 @@
+// fetching the works portion of API
+
 fetch("http://localhost:5678/api/works")
   .then((res) => {
     return res.json();
@@ -5,23 +7,24 @@ fetch("http://localhost:5678/api/works")
   .then((data) => {
     console.log(data);
 
-    // FOREACH WILL RUN THROUGH EVERY ELEMENT FROM THE ARRAY
+    //IMAGES AND CAPTIONS GENERATION
+
+    // foreach loop will run through every object of the array
 
     data.forEach((works) => {
-      // here i wil insert a variable with image paths
+      const images = `<figure><img src="${works.imageUrl}"/></figure>`;
 
-      // I CONCATENATE IMAGE FROM WORKS AND HTML TAG AND
-      // TELL THE BROWSER TO ADD IT RIGHT BEFORE THE END OF FIGURE TAG
+      const worksCaption = `<figcaption>${works.title}</figcaption>`;
 
-      const markup = `<figure>${works.imageUrl}</figure>`;
+      // i concatenate the images and their caption into one
+      // container and add it at the end of the gallery div
+      // i tell the browser to insert it before the end of the closing tag
 
+      const worksBlock = `<div>${images}${worksCaption}</div>`;
       document
         .querySelector(".gallery")
-        .insertAdjacentHTML("beforeend", markup);
-
-      const markupCaption = `<figcaption>${works.title}</figcaption>`;
-      document
-        .querySelector(".gallery")
-        .insertAdjacentHTML("beforeend", markupCaption);
+        .insertAdjacentHTML("beforeend", worksBlock);
     });
+
+    // FILTERS
   });
