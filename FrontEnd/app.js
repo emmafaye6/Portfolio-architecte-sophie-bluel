@@ -5,8 +5,6 @@ fetch("http://localhost:5678/api/works")
     return res.json();
   })
   .then((data) => {
-    console.log(data);
-
     //IMAGES AND CAPTIONS GENERATION
 
     // foreach loop will run through every object of the array
@@ -20,19 +18,11 @@ fetch("http://localhost:5678/api/works")
       // container and add it at the end of the gallery div
       // i tell the browser to insert it before the end of the closing tag
 
-      const worksBlock = `<div>${images}${worksCaption}</div>`;
+      const worksBlock = `<div class="worksblock">${images}${worksCaption}</div>`;
       document
         .querySelector(".gallery")
         .insertAdjacentHTML("beforeend", worksBlock);
+
+      console.log(works);
     });
-
-    // fetching categories api
-
-    fetch("http://localhost:5678/api/categories")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-      });
   });
