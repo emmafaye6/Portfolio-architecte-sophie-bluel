@@ -223,9 +223,12 @@ li:hover {
   border: 1px solid #1d6154;
   border-radius: 60px;
   padding: 0.8rem 1.5rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
 
-.button:hover {
+.button--selected {
   background-color: #1d6154;
   color: white;
 }
@@ -239,6 +242,10 @@ li:hover {
 
 .gallery img {
   width: 100%;
+}
+
+.--hidden {
+  display: none;
 }
 #contact {
   width: 50%;

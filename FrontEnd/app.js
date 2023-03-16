@@ -18,11 +18,10 @@ fetch("http://localhost:5678/api/works")
       // container and add it at the end of the gallery div
       // i tell the browser to insert it before the end of the closing tag
 
-      const worksBlock = `<div class="worksblock">${images}${worksCaption}</div>`;
+      const worksBlock = `<div class="worksblock" data-category-id="${works.categoryId}">${images}${worksCaption}</div>`;
       document
         .querySelector(".gallery")
         .insertAdjacentHTML("beforeend", worksBlock);
-
-      console.log(works);
     });
+    console.log(data);
   });
