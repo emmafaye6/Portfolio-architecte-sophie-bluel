@@ -7,6 +7,7 @@ fetch("http://localhost:5678/api/categories")
     let buttonsContainer = document.querySelector(".buttons__container");
 
     // creating as many buttons as there are categories
+
     categories.forEach((category) => {
       let button = document.createElement("a");
       button.classList.add("button");

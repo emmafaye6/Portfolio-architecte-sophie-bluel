@@ -9,20 +9,19 @@
       rel="stylesheet"
     />
     <meta name="description" content="" />
-    <link rel="stylesheet" href="FrontEnd/assets/style.css" />
+    <link rel="stylesheet" href="/FrontEnd/assets/style.css" />
     <title>Login - Sophie Bluel - Architecte d'intérieur</title>
-    <script src="FrontEnd/assets/scripts/login.js"></script>
   </head>
   <body>
     <header>
       <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
       <nav>
         <ul>
-          <li><a href="">projets</a></li>
+          <li><a href="index.html">projets</a></li>
           <li><a href="">contact</a></li>
           <li><a href="/login.html" class="login__link">login</a></li>
           <li>
-            <img src="FrontEnd/assets/icons/instagram.png" alt="Instagram" />
+            <img src="/FrontEnd/assets/icons/instagram.png" alt="Instagram" />
           </li>
         </ul>
       </nav>
@@ -30,16 +29,16 @@
     <main>
       <div class="form__container">
         <h2 class="login__title">Log in</h2>
-        <form action="" class="form">
-          <div class="login__form">
+        <form id="login__form">
+          <div class="login__field">
             <label for="email">E-mail</label>
-            <input type="text" name="email" id="email" required />
+            <input type="email" name="email" id="email" required />
           </div>
-          <div class="login__form">
+          <div class="login__field">
             <label for="password">Mot de passe</label>
-            <input type="text" name="password" id="password" required />
+            <input type="password" name="password" id="password" required />
           </div>
-          <button href="" class="login__button">Se connecter</button>
+          <button type="submit" class="login__button">Se connecter</button>
         </form>
 
         <a href="" class="login__link">Mot de passe oublié</a>
@@ -53,4 +52,5 @@
       </nav>
     </footer>
   </body>
+  <script src="/FrontEnd/assets/scripts/login.js"></script>
 </html>
