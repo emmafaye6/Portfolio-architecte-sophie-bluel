@@ -3,9 +3,28 @@ console.log(form);
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  console.log("I am submitted");
+
   const email = form.email.value;
-  console.log(email);
   const password = form.password.value;
-  console.log(password);
+
+  fetch("http://localhost:5678/api/users/login/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        console.log("logged in");
+        window.location.href = "/Frontend/index.html";
+      } else {
+        window.alert("Erreur d'identifiants, veuillez réessayer");
+      }
+    })
+    .catch((error) => {
+      console.error("error");
+    });
 });
