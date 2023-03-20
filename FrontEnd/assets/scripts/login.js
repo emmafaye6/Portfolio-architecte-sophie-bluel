@@ -21,7 +21,7 @@ form.addEventListener("submit", (e) => {
         console.log("logged in");
         window.location.href = "/Frontend/index.html";
       } else {
-        window.alert("Erreur d'identifiants, veuillez réessayer");
+        window.alert("Erreur dans l’identifiant ou le mot de passe");
       }
     })
     .catch((error) => {

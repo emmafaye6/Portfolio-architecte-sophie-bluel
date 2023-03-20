@@ -22,6 +22,18 @@ fetch("http://localhost:5678/api/works")
       document
         .querySelector(".gallery")
         .insertAdjacentHTML("beforeend", worksBlock);
+
+      // MODAL WORK
+
+      const modalImages = `<img class="modal__image" src="${works.imageUrl}"/>`;
+      const modalImagesCaption = `<p>${"éditer"}</p>`;
+
+      const modalWorksBlock = `<div class="modal__worksblock">${modalImages}${modalImagesCaption}</div>`;
+      console.log(modalWorksBlock);
+
+      document
+        .querySelector(".modal__workscontainer")
+        .insertAdjacentHTML("beforeend", modalWorksBlock);
     });
     console.log(data);
   });
