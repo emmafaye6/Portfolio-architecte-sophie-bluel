@@ -25,15 +25,35 @@ fetch("http://localhost:5678/api/works")
 
       // MODAL WORK
 
+      //generating works and "edit" text for each work that exists in api
       const modalImages = `<img class="modal__image" src="${works.imageUrl}"/>`;
       const modalImagesCaption = `<p>${"éditer"}</p>`;
 
       const modalWorksBlock = `<div class="modal__worksblock">${modalImages}${modalImagesCaption}</div>`;
-      console.log(modalWorksBlock);
 
       document
         .querySelector(".modal__workscontainer")
         .insertAdjacentHTML("beforeend", modalWorksBlock);
     });
-    console.log(data);
+
+    //opening modal on click on modify button
+    const modifyButton = document.getElementById("modifybutton");
+
+    modifyButton.addEventListener("click", (event) => {
+      const modal = document.querySelector(".modal");
+      const modalCross = document.querySelector(".modal__closebutton");
+      modal.classList.remove("modal--hidden");
+
+      modalCross.addEventListener("click", (event) => {
+        modal.classList.add("modal--hidden");
+      });
+    });
+
+    window.onclick = (event) => {
+      const modalContainer = document.querySelector(".modal");
+      const modal = document.querySelector(".modal__content");
+      if (event.target.contains(modal) && event.target !== modal) {
+        modalContainer.classList.add("modal--hidden");
+      }
+    };
   });

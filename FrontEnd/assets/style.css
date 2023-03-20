@@ -192,10 +192,22 @@ li:hover,
 #introduction figure {
   flex: 1;
 }
-#introduction img {
+.introduction__icon {
+  width: 20%;
+}
+#introduction figcaption {
+  width: 15%;
+  margin: 1rem 10%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  cursor: pointer;
+}
+
+.introduction__portrait {
   display: block;
-  margin: auto;
   width: 80%;
+  margin: 0 auto;
 }
 
 #introduction article {
@@ -420,13 +432,9 @@ form {
   top: 0;
 }
 
-/*
-
 .modal--hidden {
   display: none;
 }
-
-*/
 
 .modal__closebutton {
   width: 2%;
@@ -488,7 +496,7 @@ form {
 }
 
 .modal__separator {
-  border: 1px solid #b3b3b3;
+  border: 0.7px solid #b3b3b3;
   width: 420px;
   height: 0px;
   margin: 1rem 0;
