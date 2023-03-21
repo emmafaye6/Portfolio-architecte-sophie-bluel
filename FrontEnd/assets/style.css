@@ -489,17 +489,33 @@ form {
   margin-bottom: 0.5rem;
 }
 
+.moveiconcontainer,
 .trashcancontainer {
   position: absolute;
-  width: 30%;
-  height: 20%;
-  background-color: rgba(0, 0, 0, 0.82);
-  top: 2%;
-  left: 65%;
+  width: 21%;
+  height: 14%;
+  background-color: rgba(0, 0, 0, 0.72);
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 5px;
+  top: 4%;
+  cursor: pointer;
+}
+
+.moveiconcontainer {
+  left: 44%;
+  display: none;
+}
+
+.modal__worksblock:hover .moveiconcontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trashcancontainer {
+  left: 71%;
 }
 
 .modal__worksblock p {

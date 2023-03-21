@@ -28,9 +28,10 @@ fetch("http://localhost:5678/api/works")
       //generating works and "edit" text for each work that exists in api
       const modalImages = `<img class="modal__image" src="${works.imageUrl}"/>`;
       const modalImagesCaption = `<p>${"éditer"}</p>`;
-      const trashIcon = `<div class="trashcancontainer"><i class="fa-solid fa-trash-can modal__worksblock--icon1" style="color:white"></i></div>`;
+      const moveIcon = `<div class="moveiconcontainer"><i class="fa-solid fa-arrows-up-down-left-right fa-sm" style="color:white"></i></div>`;
+      const trashIcon = `<div class="trashcancontainer"><i class="fa-solid fa-trash-can modal__worksblock--icon1 fa-sm" style="color:white"></i></div>`;
 
-      const modalWorksBlock = `<div class="modal__worksblock">${modalImages}${trashIcon}${modalImagesCaption}</div>`;
+      const modalWorksBlock = `<div class="modal__worksblock">${modalImages}${moveIcon}${trashIcon}${modalImagesCaption}</div>`;
 
       document
         .querySelector(".modal__workscontainer")
