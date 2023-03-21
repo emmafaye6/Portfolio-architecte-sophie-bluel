@@ -49,7 +49,10 @@
         <ul>
           <li><a href="">projets</a></li>
           <li><a href="">contact</a></li>
-          <li><a href="./login.html">login</a></li>
+          <li><a href="./login.html" class="login">login</a></li>
+          <li>
+            <a href="./logout.html" class="logout logout--hidden">logout</a>
+          </li>
           <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
         </ul>
       </nav>
@@ -93,7 +96,18 @@
         </article>
       </section>
       <section id="portfolio">
-        <h2>Mes Projets</h2>
+        <div class="portfolio__header">
+          <h2>Mes Projets</h2>
+          <div class="userelements--hidden portfolio__header--modify">
+            <img
+              class="introduction__icon"
+              src="./assets/icons/pen-to-square-regular.svg"
+              alt=""
+            />
+            <figcaption>modifier</figcaption>
+          </div>
+        </div>
+
         <div class="buttons__container">
           <a class="button" id="filter-all">Tous</a>
         </div>

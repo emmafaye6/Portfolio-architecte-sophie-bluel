@@ -7,11 +7,15 @@ fetch("http://localhost:5678/api/works")
   .then((data) => {
     window.addEventListener("load", (event) => {
       let userElements = document.querySelectorAll(".userelements--hidden");
+      const logoutLink = document.querySelector(".logout");
+      const loginLink = document.querySelector(".login");
 
       if (localStorage.getItem("token") !== null) {
         userElements.forEach((userElement) => {
           userElement.classList.remove("userelements--hidden");
         });
+        loginLink.classList.add("login--hidden");
+        logoutLink.classList.remove("logout--hidden");
       }
     });
 
