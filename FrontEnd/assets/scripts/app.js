@@ -5,6 +5,16 @@ fetch("http://localhost:5678/api/works")
     return res.json();
   })
   .then((data) => {
+    window.addEventListener("load", (event) => {
+      let userElements = document.querySelectorAll(".userelements--hidden");
+
+      if (localStorage.getItem("token") !== null) {
+        userElements.forEach((userElement) => {
+          userElement.classList.remove("userelements--hidden");
+        });
+      }
+    });
+
     //IMAGES AND CAPTIONS GENERATION
 
     // foreach loop will run through every object of the array
@@ -39,7 +49,7 @@ fetch("http://localhost:5678/api/works")
     });
 
     //opening modal on click on modify button
-    const modifyButton = document.getElementById("modifybutton");
+    const modifyButton = document.querySelector(".modifybutton");
 
     modifyButton.addEventListener("click", (event) => {
       const modal = document.querySelector(".modal");
