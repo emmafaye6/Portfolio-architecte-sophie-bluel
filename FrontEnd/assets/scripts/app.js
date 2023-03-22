@@ -40,7 +40,7 @@ fetch("http://localhost:5678/api/works")
       // MODAL WORK
 
       //generating works and "edit" text for each work that exists in api
-      const modalImages = `<img class="modal__image" src="${works.imageUrl}"/>`;
+      const modalImages = `<img class="modal__image" src="${works.imageUrl}" data-id="${works.id}"/>`;
       const modalImagesCaption = `<p>${"éditer"}</p>`;
       const moveIcon = `<div class="moveiconcontainer"><i class="fa-solid fa-arrows-up-down-left-right fa-sm" style="color:white"></i></div>`;
       const trashIcon = `<div class="trashcancontainer"><i class="fa-solid fa-trash-can modal__worksblock--icon1 fa-sm" style="color:white"></i></div>`;
@@ -52,10 +52,7 @@ fetch("http://localhost:5678/api/works")
         .insertAdjacentHTML("beforeend", modalWorksBlock);
     });
 
-    //opening modal on click on modify button
-    const modifyButton = document.querySelector(".modifybutton");
-
-    modifyButton.addEventListener("click", (event) => {
+    function modals() {
       const modal = document.querySelector(".modal");
       const modalCross = document.querySelector(".modal__closebutton");
       modal.classList.remove("modal--hidden");
@@ -63,8 +60,20 @@ fetch("http://localhost:5678/api/works")
       modalCross.addEventListener("click", (event) => {
         modal.classList.add("modal--hidden");
       });
+    }
+    //opening modal on click on modify button
+    const modifyButton = document.querySelector(".modifybutton");
+    modifyButton.addEventListener("click", (event) => {
+      modals();
     });
 
+    //opening modal on click on other modify button
+    const headerModify = document.querySelector(".portfolio__header--modify");
+    headerModify.addEventListener("click", (event) => {
+      modals();
+    });
+
+    //modal closes whenever clicking out of it
     window.onclick = (event) => {
       const modalContainer = document.querySelector(".modal");
       const modal = document.querySelector(".modal__content");
@@ -72,4 +81,15 @@ fetch("http://localhost:5678/api/works")
         modalContainer.classList.add("modal--hidden");
       }
     };
+
+    const trashButtons = document.querySelectorAll(".trashcancontainer");
+    const projects = document.querySelectorAll(".modal__image");
+    console.log(projects);
+
+    trashButtons.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        console.log("I am trash");
+        console.log(projects.dataset.id);
+      });
+    });
   });

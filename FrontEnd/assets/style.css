@@ -251,6 +251,7 @@ li:hover,
 
 .portfolio__header img {
   width: 55%;
+  margin-right: 0.5rem;
 }
 
 #portfolio h2 {
@@ -527,6 +528,7 @@ form {
   border-radius: 5px;
   top: 4%;
   cursor: pointer;
+  border: none;
 }
 
 .moveiconcontainer {
