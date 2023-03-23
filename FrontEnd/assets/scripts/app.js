@@ -40,10 +40,10 @@ fetch("http://localhost:5678/api/works")
       // MODAL WORK
 
       //generating works and "edit" text for each work that exists in api
-      const modalImages = `<img class="modal__image" src="${works.imageUrl}" data-id="${works.id}"/>`;
+      const modalImages = `<img class="modal__image" src="${works.imageUrl}"/>`;
       const modalImagesCaption = `<p>${"éditer"}</p>`;
-      const moveIcon = `<div class="moveiconcontainer"><i class="fa-solid fa-arrows-up-down-left-right fa-sm" style="color:white"></i></div>`;
-      const trashIcon = `<div class="trashcancontainer"><i class="fa-solid fa-trash-can modal__worksblock--icon1 fa-sm" style="color:white"></i></div>`;
+      const moveIcon = `<div class="moveiconcontainer"><i class="fa-solid fa-arrows-up-down-left-right fa-xs fa-1x" style="color:white"></i></div>`;
+      const trashIcon = `<div class="trashcancontainer" data-id="${works.id}"><i class="fa-solid fa-trash-can modal__worksblock--icon1 fa-xs fa-1x" style="color:white"></i></div>`;
 
       const modalWorksBlock = `<div class="modal__worksblock">${modalImages}${moveIcon}${trashIcon}${modalImagesCaption}</div>`;
 
@@ -83,13 +83,23 @@ fetch("http://localhost:5678/api/works")
     };
 
     const trashButtons = document.querySelectorAll(".trashcancontainer");
-    const projects = document.querySelectorAll(".modal__image");
-    console.log(projects);
+    const token = localStorage.token;
 
     trashButtons.forEach((button) => {
       button.addEventListener("click", (event) => {
-        console.log("I am trash");
-        console.log(projects.dataset.id);
+        fetch("http://localhost:5678/api/works/{button.dataset.id}", {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }).then((response) => {
+          if (response.ok) {
+            console.log("response is ok");
+          } else {
+            console.log("response is not ok");
+          }
+        });
       });
     });
   });
