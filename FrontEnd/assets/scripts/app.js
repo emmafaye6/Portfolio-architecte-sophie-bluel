@@ -87,7 +87,7 @@ fetch("http://localhost:5678/api/works")
 
     trashButtons.forEach((button) => {
       button.addEventListener("click", (event) => {
-        fetch("http://localhost:5678/api/works/{button.dataset.id}", {
+        fetch(`http://localhost:5678/api/works/${button.dataset.id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
