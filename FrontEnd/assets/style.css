@@ -502,7 +502,7 @@ h2.login__title {
 .secondmodalcontent {
   height: fit-content;
   width: 40%;
-  margin: 6% auto;
+  margin: 10% auto;
   background-color: #ffffff;
   border-radius: 10px;
   display: flex;
@@ -669,6 +669,7 @@ h2.login__title {
 
 .secondmodal__arrow {
   width: 3.5%;
+  cursor: pointer;
 }
 
 .secondmodal__container {
@@ -685,16 +686,19 @@ h2.login__title {
 }
 
 .secondmodal__button {
-  width: 40%;
+  width: 30%;
   background: #cbd6dc;
   border-radius: 50px;
   text-decoration: none;
   font-family: "Work Sans";
   font-size: 14px;
-  padding: 0.8rem 2.2rem;
+  padding: 0.8rem 1.8rem;
   color: #306685;
   border: none;
   margin-bottom: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
 }
 
 .secondmodal__buttontext {

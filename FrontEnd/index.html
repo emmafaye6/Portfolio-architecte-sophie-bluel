@@ -33,41 +33,55 @@
         <a href="" class="modal__button">Ajouter une photo</a>
         <a href="" class="modal__deletelink">Supprimer la galerie</a>
       </div>
-      
+
       <div class="secondmodalcontent secondmodal__content--hidden">
         <div class="secondmodal__iconscontainer">
-          <img src="/FrontEnd/assets/icons/arrow-left-solid.svg" alt="" class="secondmodal__arrow">
-        <img
-          src="/FrontEnd/assets/icons/xmark-solid.svg"
-          alt=""
-          class="modal__closebutton secondmodal__cross"
-        /></div>
-        
-        
+          <img
+            src="/FrontEnd/assets/icons/arrow-left-solid.svg"
+            alt=""
+            class="secondmodal__arrow"
+          />
+          <img
+            src="/FrontEnd/assets/icons/xmark-solid.svg"
+            alt=""
+            class="modal__closebutton secondmodal__cross"
+          />
+        </div>
+
         <h4 class="modal__title">Ajout Photo</h4>
         <div class="secondmodal__container">
-          
           <section class="secondmodal__formpicturecontainer">
-            <img src="/FrontEnd/assets/icons/image-regular.svg" alt="" class="secondmodal__icon">
-          <button href="" class="secondmodal__button">+ Ajouter photo</button>
-          <p class="secondmodal__buttontext">jpg, png : 4mo max</p>
-        </section>
+            <img
+              src="/FrontEnd/assets/icons/image-regular.svg"
+              alt=""
+              class="secondmodal__icon"
+            />
+            <input
+              type="file"
+              id="actual-btn"
+              hidden
+              accept="images/png, images/jpg"
+            />
+            <label for="actual-btn" class="secondmodal__button"
+              >+ Ajouter photo</label
+            >
+
+            <p class="secondmodal__buttontext">jpg, png : 4mo max</p>
+          </section>
           <form action="" class="secondmodal__form">
             <label for="title">Titre</label>
-            <input id="title" class="secondmodal__input" type="text">
+            <input id="title" class="secondmodal__input" type="text" />
             <label for="category">Catégorie</label>
-           <select class="secondmodal__input" name = "category">
-            <option value = "" selected></option>
-            <option value = "Objets">Objets</option>
-            <option value = "Appartements">Appartements</option>
-            <option value = "Hotels">Hotels & restaurants</option>
-         </select>
+            <select class="secondmodal__input" name="category">
+              <option value="" selected></option>
+              <option value="Objets">Objets</option>
+              <option value="Appartements">Appartements</option>
+              <option value="Hotels">Hotels & restaurants</option>
+            </select>
           </form>
         </div>
         <hr class="modal__separator" />
         <a href="" class="modal__button">Valider</a>
-        
-      </div>
       </div>
     </div>
 
