@@ -378,7 +378,7 @@ h2.login__title {
   max-width: 1440px;
 }
 
-form {
+.form {
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -460,8 +460,11 @@ form {
   top: 0;
 }
 
-.modal--hidden {
+.modal--hidden,
+.secondmodal__content--hidden,
+.modal__content--hidden {
   display: none;
+  visibility: hidden;
 }
 
 .modal__closebutton {
@@ -478,7 +481,7 @@ form {
 
 .modal__title {
   font-family: "Work Sans";
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   font-style: normal;
   font-weight: 400;
   font-size: 26px;
@@ -487,7 +490,8 @@ form {
   color: #000000;
 }
 
-.modal__content {
+.modal__content,
+.secondmodalcontent {
   height: fit-content;
   width: 40%;
   margin: 6% auto;
@@ -498,6 +502,10 @@ form {
   align-items: center;
   flex-wrap: wrap;
   padding: 1.5rem 0 1.9rem 0;
+  z-index: 999;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .modal__workscontainer {
@@ -580,6 +588,7 @@ form {
   font-size: 14px;
   line-height: 17px;
   margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .modal__deletelink {
@@ -635,4 +644,36 @@ form {
 
 .modalheader--hidden {
   display: none;
+}
+
+.secondmodal__iconscontainer {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  margin: 1rem auto;
+}
+
+.secondmodal__cross {
+  width: 2.5%;
+}
+
+.secondmodal__arrow {
+  width: 3.5%;
+}
+
+.secondmodal__container {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+}
+
+.secondmodal__button {
+  width: 50%;
+  background: #cbd6dc;
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: "Work Sans";
+  font-size: 14px;
+  padding: 0.8rem 2.2rem;
+  color: #306685;
 }

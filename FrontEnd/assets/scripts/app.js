@@ -54,11 +54,14 @@ fetch("http://localhost:5678/api/works")
 
     function modals() {
       const modal = document.querySelector(".modal");
-      const modalCross = document.querySelector(".modal__closebutton");
       modal.classList.remove("modal--hidden");
 
-      modalCross.addEventListener("click", (event) => {
-        modal.classList.add("modal--hidden");
+      const modalCross = document.querySelectorAll(".modal__closebutton");
+
+      modalCross.forEach((cross) => {
+        cross.addEventListener("click", (event) => {
+          modal.classList.add("modal--hidden");
+        });
       });
     }
     //opening modal on click on modify button
@@ -101,5 +104,27 @@ fetch("http://localhost:5678/api/works")
           }
         });
       });
+    });
+
+    // change modal content on click on the add picture button
+    const addContent = document.querySelector(".modal__button");
+
+    const firstModal = document.querySelector(".modal__content");
+    const secondModal = document.querySelector(".secondmodalcontent");
+
+    addContent.addEventListener("click", (event) => {
+      event.preventDefault();
+      firstModal.classList.add("modal__content--hidden");
+      secondModal.classList.remove("secondmodal__content--hidden");
+    });
+
+    // back to first modal on arrow click
+
+    const arrow = document.querySelector(".secondmodal__arrow");
+
+    arrow.addEventListener("click", (event) => {
+      console.log("I am the arrow");
+      secondModal.classList.add("secondmodal__content--hidden");
+      firstModal.classList.remove("modal__content--hidden");
     });
   });
