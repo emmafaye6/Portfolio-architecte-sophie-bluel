@@ -35,7 +35,8 @@
       </div>
       
       <div class="secondmodalcontent secondmodal__content--hidden">
-        <div class="secondmodal__iconscontainer"><img src="/FrontEnd/assets/icons/arrow-left-solid.svg" alt="" class="secondmodal__arrow">
+        <div class="secondmodal__iconscontainer">
+          <img src="/FrontEnd/assets/icons/arrow-left-solid.svg" alt="" class="secondmodal__arrow">
         <img
           src="/FrontEnd/assets/icons/xmark-solid.svg"
           alt=""
@@ -46,8 +47,21 @@
         <h4 class="modal__title">Ajout Photo</h4>
         <div class="secondmodal__container">
           
-          <form action="">
-            <a href="" class="secondmodal__button">+ Ajouter photo</a>
+          <section class="secondmodal__formpicturecontainer">
+            <img src="/FrontEnd/assets/icons/image-regular.svg" alt="" class="secondmodal__icon">
+          <button href="" class="secondmodal__button">+ Ajouter photo</button>
+          <p class="secondmodal__buttontext">jpg, png : 4mo max</p>
+        </section>
+          <form action="" class="secondmodal__form">
+            <label for="title">Titre</label>
+            <input id="title" type="text">
+            <label for="category">Catégorie</label>
+           <select name = "category">
+            <option value = "" selected></option>
+            <option value = "Objets">Objets</option>
+            <option value = "Appartements">Appartements</option>
+            <option value = "Hotels">Hotels & restaurants</option>
+         </select>
           </form>
         </div>
         <hr class="modal__separator" />
@@ -138,7 +152,7 @@
       <section id="contact">
         <h2>Contact</h2>
         <p>Vous avez un projet ? Discutons-en !</p>
-        <form action="#" method="post">
+        <form action="#" method="post" class="form">
           <label for="name">Nom</label>
           <input type="text" name="name" id="name" />
           <label for="email">Email</label>
