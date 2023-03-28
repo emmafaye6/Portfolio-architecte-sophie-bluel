@@ -61,6 +61,7 @@
               id="actual-btn"
               hidden
               accept="images/png, images/jpg"
+              required
             />
             <label for="actual-btn" class="secondmodal__button"
               >+ Ajouter photo</label
@@ -70,7 +71,7 @@
           </section>
           <form action="" class="secondmodal__form">
             <label for="title">Titre</label>
-            <input id="title" class="secondmodal__input" type="text" />
+            <input id="title" class="secondmodal__input" type="text" required />
             <label for="category">Catégorie</label>
             <select class="secondmodal__input" name="category">
               <option value="" selected></option>
@@ -101,7 +102,7 @@
           <li><a href="">contact</a></li>
           <li><a href="./login.html" class="login">login</a></li>
           <li>
-            <a href="./logout.html" class="logout logout--hidden">logout</a>
+            <a class="logout logout--hidden">logout</a>
           </li>
           <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
         </ul>

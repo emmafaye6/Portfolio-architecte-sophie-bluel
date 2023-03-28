@@ -128,5 +128,14 @@ fetch("http://localhost:5678/api/works")
       firstModal.classList.remove("modal__content--hidden");
     });
 
+    // making logout buton functional
+    const logoutButton = document.querySelector(".logout");
+
+    logoutButton.addEventListener("click", (event) => {
+      event.preventDefault;
+      localStorage.removeItem("token");
+      window.location.href = "/Frontend/index.html";
+    });
+
     // creating a picture thumbnail on upload
   });
