@@ -49,24 +49,26 @@
         <h4 class="modal__title">Ajout Photo</h4>
         <div class="secondmodal__container">
           <section class="secondmodal__formpicturecontainer">
-            <img
-              src="/FrontEnd/assets/icons/image-regular.svg"
-              alt=""
-              class="secondmodal__icon"
-            />
-
-            <input
-              type="file"
-              class="image_input"
-              id="actual-btn"
-              hidden
-              accept="images/png, images/jpg"
-              required
-            />
-            <label for="actual-btn" class="secondmodal__button"
-              >+ Ajouter photo</label
-            >
-
+            <div class="thumbnailpicture">
+              <img
+                src="/FrontEnd/assets/icons/image-regular.svg"
+                alt=""
+                class="secondmodal__icon"
+              />
+              <img class="image-upload --hidden" src="#" alt="image" />
+            </div>
+            <div class="secondmodal__buttoncontainer">
+              <input
+                type="file"
+                id="image_input"
+                name="image"
+                accept=".jpg, .png"
+                hidden
+              />
+              <label for="image_input" class="secondmodal__button"
+                >+ Ajouter photo</label
+              >
+            </div>
             <p class="secondmodal__buttontext">jpg, png : 4mo max</p>
           </section>
           <form action="" class="secondmodal__form">

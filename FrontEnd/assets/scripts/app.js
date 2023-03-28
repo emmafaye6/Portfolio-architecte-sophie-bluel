@@ -129,6 +129,7 @@ fetch("http://localhost:5678/api/works")
     });
 
     // making logout buton functional
+
     const logoutButton = document.querySelector(".logout");
 
     logoutButton.addEventListener("click", (event) => {
@@ -138,4 +139,29 @@ fetch("http://localhost:5678/api/works")
     });
 
     // creating a picture thumbnail on upload
+
+    const addButton = document.querySelector("#image_input");
+    const description = document.querySelector(".secondmodal__buttontext");
+    const placeholderIcon = document.querySelector(".secondmodal__icon");
+    const buttons = document.querySelector(".secondmodal__buttoncontainer");
+
+    const preview = (event) => {
+      if (event.target.files.length > 0) {
+        let src = URL.createObjectURL(event.target.files[0]);
+        let thumbnail = document.querySelector(".image-upload");
+        thumbnail.src = src;
+
+        // removing all unnecessary content
+        placeholderIcon.classList.add("--hidden");
+        addButton.classList.add("--hidden");
+        description.classList.add("--hidden");
+        thumbnail.classList.remove("--hidden");
+        buttons.classList.add("--hidden");
+      }
+    };
+
+    addButton.addEventListener("change", function (e) {
+      e.preventDefault();
+      preview(e);
+    });
   });

@@ -711,12 +711,12 @@ h2.login__title {
   width: 80%;
   background-color: #e8f1f6;
   height: fit-content;
-  padding: 2rem 0;
   margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 1.5rem;
+  padding: 2rem 0;
 }
 
 .secondmodal__form {
@@ -734,4 +734,23 @@ h2.login__title {
 
 .modal__button {
   margin-top: 1.5rem;
+}
+
+/* THUMBNAIL STYLING */
+
+.secondmodal__buttoncontainer {
+  width: 100%;
+  margin-left: 50%;
+}
+
+.thumbnailpicture {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.image-upload {
+  width: 45%;
+  margin: auto;
 }
