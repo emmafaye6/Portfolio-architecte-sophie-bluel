@@ -127,4 +127,6 @@ fetch("http://localhost:5678/api/works")
       secondModal.classList.add("secondmodal__content--hidden");
       firstModal.classList.remove("modal__content--hidden");
     });
+
+    // creating a picture thumbnail on upload
   });
