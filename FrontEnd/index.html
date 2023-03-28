@@ -46,7 +46,7 @@
           />
         </div>
 
-        <h4 class="modal__title">Ajout Photo</h4>
+        <h4 class="modal__title">Ajout photo</h4>
         <div class="secondmodal__container">
           <section class="secondmodal__formpicturecontainer">
             <div class="thumbnailpicture">
@@ -71,20 +71,21 @@
             </div>
             <p class="secondmodal__buttontext">jpg, png : 4mo max</p>
           </section>
-          <form action="" class="secondmodal__form">
+          <form method="POST" class="secondmodal__form">
             <label for="title">Titre</label>
             <input id="title" class="secondmodal__input" type="text" required />
             <label for="category">Catégorie</label>
-            <select class="secondmodal__input" name="category">
+            <select class="secondmodal__input" name="category" required>
               <option value="" selected></option>
               <option value="Objets">Objets</option>
               <option value="Appartements">Appartements</option>
               <option value="Hotels">Hotels & restaurants</option>
             </select>
-          </form>
+          
         </div>
         <hr class="modal__separator" />
-        <a href="" class="modal__button">Valider</a>
+        <input type="submit" class="modal__button" id="secondmodal__submitmode">Valider</input>
+        </form>
       </div>
     </div>
 

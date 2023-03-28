@@ -164,4 +164,21 @@ fetch("http://localhost:5678/api/works")
       e.preventDefault();
       preview(e);
     });
+
+    // post functionality
+
+    const submitButton = document.querySelector("#secondmodal__submitmode");
+
+    submitButton.addEventListener("click", (event) => {
+      event.preventDefault;
+
+      fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((reponse) => reponse.json(), console.log(data))
+        .then((data) => {});
+    });
   });
