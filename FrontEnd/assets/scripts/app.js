@@ -140,7 +140,7 @@ fetch("http://localhost:5678/api/works")
 
     // creating a picture thumbnail on upload
 
-    const addButton = document.querySelector("#image_input");
+    const addButton = document.querySelector("#newimage");
     const description = document.querySelector(".secondmodal__buttontext");
     const placeholderIcon = document.querySelector(".secondmodal__icon");
     const buttons = document.querySelector(".secondmodal__buttoncontainer");
@@ -167,18 +167,45 @@ fetch("http://localhost:5678/api/works")
 
     // post functionality
 
-    const submitButton = document.querySelector("#secondmodal__submitmode");
+    const submitButton = document.querySelector(".sendbutton");
+
+    let title = document.querySelector("#newtitle");
+    let category = document.querySelector("#newcategory");
+    // let image = document.querySelector(".image-upload");
 
     submitButton.addEventListener("click", (event) => {
+      console.log("I clicked");
       event.preventDefault;
+      // ensuring that all field are completed before user can send form
+      if (
+        title.value == "" ||
+        category.value == ""
+        // ||
+        // image.classList.contains("--hidden")
+      ) {
+        alert("L'un des champs est vide");
+      }
+
+      const newImage = document.querySelector(".image-upload");
+      const newTitle = document.querySelector("#newtitle");
+      const newCategory = document.querySelector("#newcategory");
+
+      const data = new FormData();
+
+      data.append("image", newImage);
+      data.append("title", newTitle.value);
+      data.append("category", newCategory.value);
 
       fetch("http://localhost:5678/api/works", {
         method: "POST",
         headers: {
+          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
+        body: JSON.stringify(data),
       })
-        .then((reponse) => reponse.json(), console.log(data))
-        .then((data) => {});
+        .then((response) => response.json())
+        //.then((data) => {})
+        .catch((error) => console.log(error));
     });
   });

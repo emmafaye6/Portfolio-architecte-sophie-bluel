@@ -60,12 +60,12 @@
             <div class="secondmodal__buttoncontainer">
               <input
                 type="file"
-                id="image_input"
+                id="newimage"
                 name="image"
                 accept=".jpg, .png"
                 hidden
               />
-              <label for="image_input" class="secondmodal__button"
+              <label for="newimage" class="secondmodal__button"
                 >+ Ajouter photo</label
               >
             </div>
@@ -73,9 +73,9 @@
           </section>
           <form method="POST" class="secondmodal__form">
             <label for="title">Titre</label>
-            <input id="title" class="secondmodal__input" type="text" required />
+            <input id="newtitle" class="secondmodal__input" type="text" required />
             <label for="category">Catégorie</label>
-            <select class="secondmodal__input" name="category" required>
+            <select class="secondmodal__input" name="category" id="newcategory" required>
               <option value="" selected></option>
               <option value="Objets">Objets</option>
               <option value="Appartements">Appartements</option>
@@ -84,7 +84,7 @@
           
         </div>
         <hr class="modal__separator" />
-        <input type="submit" class="modal__button" id="secondmodal__submitmode">Valider</input>
+        <button type="submit" class="sendbutton" id="secondmodal__submitmode">Valider</input>
         </form>
       </div>
     </div>
@@ -177,7 +177,8 @@
           <input type="email" name="email" id="email" />
           <label for="message">Message</label>
           <textarea name="message" id="message" cols="30" rows="10"></textarea>
-          <input type="submit" value="Envoyer" />
+
+          <button type="button" value="Envoyer" class="contactformbutton"/>
         </form>
       </section>
     </main>
