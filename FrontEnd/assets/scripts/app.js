@@ -1,24 +1,21 @@
-// fetching the works portion of API
+// fetching the projects from api when the page has loaded
 
 fetch("http://localhost:5678/api/works")
   .then((res) => {
     return res.json();
   })
   .then((data) => {
-    window.addEventListener("load", (event) => {
-      let userElements = document.querySelectorAll(".userelements--hidden");
-      const logoutLink = document.querySelector(".logout");
-      const loginLink = document.querySelector(".login");
+    let userElements = document.querySelectorAll(".userelements--hidden");
+    const logoutLink = document.querySelector(".logout");
+    const loginLink = document.querySelector(".login");
 
-      if (localStorage.getItem("token") !== null) {
-        userElements.forEach((userElement) => {
-          userElement.classList.remove("userelements--hidden");
-        });
-        loginLink.classList.add("login--hidden");
-        logoutLink.classList.remove("logout--hidden");
-      }
-    });
-
+    if (localStorage.getItem("token") !== null) {
+      userElements.forEach((userElement) => {
+        userElement.classList.remove("userelements--hidden");
+      });
+      loginLink.classList.add("login--hidden");
+      logoutLink.classList.remove("logout--hidden");
+    }
     //IMAGES AND CAPTIONS GENERATION
 
     // foreach loop will run through every object of the array
@@ -51,6 +48,8 @@ fetch("http://localhost:5678/api/works")
         .querySelector(".modal__workscontainer")
         .insertAdjacentHTML("beforeend", modalWorksBlock);
     });
+
+    // creating the function that will take place on click
 
     function modals() {
       const modal = document.querySelector(".modal");
@@ -85,6 +84,8 @@ fetch("http://localhost:5678/api/works")
       }
     };
 
+    // deleting a post on click on trash icon
+
     const trashButtons = document.querySelectorAll(".trashcancontainer");
     const token = localStorage.token;
 
@@ -107,6 +108,7 @@ fetch("http://localhost:5678/api/works")
     });
 
     // change modal content on click on the add picture button
+
     const addContent = document.querySelector(".modal__button");
     const firstModal = document.querySelector(".modal__content");
     const secondModal = document.querySelector(".secondmodalcontent");
@@ -171,16 +173,16 @@ fetch("http://localhost:5678/api/works")
 
     let title = document.querySelector("#newtitle");
     let category = document.querySelector("#newcategory");
-    // let image = document.querySelector(".image-upload");
+    let image = document.querySelector(".image-upload");
 
     submitButton.addEventListener("click", (event) => {
       event.preventDefault();
+
       // ensuring that all field are completed before user can send form
       if (
         title.value == "" ||
-        category.value == ""
-        // ||
-        // image.classList.contains("--hidden")
+        category.value == "" ||
+        image.classList.contains("--hidden")
       ) {
         alert("L'un des champs est vide");
       }
@@ -197,8 +199,6 @@ fetch("http://localhost:5678/api/works")
 
       const data = new FormData();
 
-      //const formAddWorks = document.querySelector(".secondmodal__form");
-
       data.append("image", newImage.files[0]);
       data.append("title", newTitle.value);
       data.append("category", newCategory.value);
@@ -212,9 +212,6 @@ fetch("http://localhost:5678/api/works")
         body: data,
       })
         .then((response) => response.json())
-        //.then((data) => {
-        // console.log("Request got through");
-        //})
         .catch((error) => console.log(error));
     });
   });
