@@ -576,15 +576,15 @@ h2.login__title {
 
 .modal__separator {
   border: 0.7px solid #b3b3b3;
-  width: 420px;
+  width: 70%;
   height: 0px;
   margin: 1rem 0;
 }
 
-.modal__button {
+.modal__button,
+.sendbutton {
   display: flex;
   justify-content: center;
-  background: #1d6154;
   border-radius: 60px;
   width: 25%;
   padding: 0.7rem 1.7rem;
@@ -592,12 +592,22 @@ h2.login__title {
   text-decoration: none;
   font-family: "Syne";
   font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 17px;
+  cursor: pointer;
   margin-bottom: 1.5rem;
   text-align: center;
   border: none;
+}
+
+.modal__button {
+  background: #1d6154;
+}
+
+.sendbutton {
+  background-color: #eeeeee;
+}
+
+.sendbutton--active {
+  background-color: #1d6154;
 }
 
 .modal__deletelink {

@@ -71,20 +71,20 @@
             </div>
             <p class="secondmodal__buttontext">jpg, png : 4mo max</p>
           </section>
-          <form method="POST" class="secondmodal__form">
+          <form class="secondmodal__form">
             <label for="title">Titre</label>
-            <input id="newtitle" class="secondmodal__input" type="text" required />
+            <input id="newtitle" class="secondmodal__input" type="text" name="title" required />
             <label for="category">Catégorie</label>
             <select class="secondmodal__input" name="category" id="newcategory" required>
               <option value="" selected></option>
-              <option value="Objets">Objets</option>
-              <option value="Appartements">Appartements</option>
-              <option value="Hotels">Hotels & restaurants</option>
+              <option value="1">Objets</option>
+              <option value="2">Appartements</option>
+              <option value="3">Hotels & restaurants</option>
             </select>
           
         </div>
         <hr class="modal__separator" />
-        <button type="submit" class="sendbutton" id="secondmodal__submitmode">Valider</input>
+        <button type ="button" class="sendbutton" id="secondmodal__submitmode">Valider</input>
         </form>
       </div>
     </div>

@@ -108,7 +108,6 @@ fetch("http://localhost:5678/api/works")
 
     // change modal content on click on the add picture button
     const addContent = document.querySelector(".modal__button");
-
     const firstModal = document.querySelector(".modal__content");
     const secondModal = document.querySelector(".secondmodalcontent");
 
@@ -123,7 +122,6 @@ fetch("http://localhost:5678/api/works")
     const arrow = document.querySelector(".secondmodal__arrow");
 
     arrow.addEventListener("click", (event) => {
-      console.log("I am the arrow");
       secondModal.classList.add("secondmodal__content--hidden");
       firstModal.classList.remove("modal__content--hidden");
     });
@@ -133,7 +131,7 @@ fetch("http://localhost:5678/api/works")
     const logoutButton = document.querySelector(".logout");
 
     logoutButton.addEventListener("click", (event) => {
-      event.preventDefault;
+      event.preventDefault();
       localStorage.removeItem("token");
       window.location.href = "/Frontend/index.html";
     });
@@ -144,6 +142,7 @@ fetch("http://localhost:5678/api/works")
     const description = document.querySelector(".secondmodal__buttontext");
     const placeholderIcon = document.querySelector(".secondmodal__icon");
     const buttons = document.querySelector(".secondmodal__buttoncontainer");
+    const button = document.querySelector(".sendbutton");
 
     const preview = (event) => {
       if (event.target.files.length > 0) {
@@ -157,6 +156,7 @@ fetch("http://localhost:5678/api/works")
         description.classList.add("--hidden");
         thumbnail.classList.remove("--hidden");
         buttons.classList.add("--hidden");
+        button.classList.add("sendbutton--active");
       }
     };
 
@@ -174,8 +174,7 @@ fetch("http://localhost:5678/api/works")
     // let image = document.querySelector(".image-upload");
 
     submitButton.addEventListener("click", (event) => {
-      console.log("I clicked");
-      event.preventDefault;
+      event.preventDefault();
       // ensuring that all field are completed before user can send form
       if (
         title.value == "" ||
@@ -186,26 +185,36 @@ fetch("http://localhost:5678/api/works")
         alert("L'un des champs est vide");
       }
 
-      const newImage = document.querySelector(".image-upload");
+      const categorySelector = document.querySelector(".secondmodal__input");
+      categorySelector.addEventListener("click", (event) => {
+        event.preventDefault();
+      });
+
+      const newImage = document.querySelector("#newimage");
       const newTitle = document.querySelector("#newtitle");
+
       const newCategory = document.querySelector("#newcategory");
 
       const data = new FormData();
 
-      data.append("image", newImage);
+      //const formAddWorks = document.querySelector(".secondmodal__form");
+
+      data.append("image", newImage.files[0]);
       data.append("title", newTitle.value);
       data.append("category", newCategory.value);
 
       fetch("http://localhost:5678/api/works", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          Accept: "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(data),
+        body: data,
       })
         .then((response) => response.json())
-        //.then((data) => {})
+        //.then((data) => {
+        // console.log("Request got through");
+        //})
         .catch((error) => console.log(error));
     });
   });
