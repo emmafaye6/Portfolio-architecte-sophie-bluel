@@ -263,7 +263,9 @@ li:hover,
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+
+  gap: 1rem;
+  justify-content: center;
   width: 70%;
   margin-bottom: 2rem;
 }
@@ -292,11 +294,23 @@ li:hover,
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-column-gap: 20px;
-  grid-row-gap: 20px;
+  grid-row-gap: 35px;
 }
 
 .gallery img {
   width: 100%;
+}
+
+.worksblock figure {
+  height: 100%;
+}
+
+.worksblock figure img {
+  height: 100%;
+}
+
+.worksblock figcaption {
+  margin-top: 0.3rem;
 }
 
 .--hidden {
@@ -310,6 +324,7 @@ li:hover,
   align-items: center;
   margin-top: 2.5rem;
 }
+
 #contact > * {
   text-align: center;
 }
@@ -420,9 +435,9 @@ h2.login__title {
   color: #3d3d3d;
 }
 
-.login__button {
+.login__button,
+.contactformbutton {
   font-family: "Syne";
-  text-decoration: none;
   color: white;
   font-size: 1rem;
   font-weight: bold;
@@ -433,8 +448,7 @@ h2.login__title {
   display: flex;
   align-items: center;
   justify-content: center;
-  align-self: center;
-  margin: 2rem 0 0 0;
+  margin: 2rem auto;
   width: 30%;
   cursor: pointer;
 }
@@ -523,13 +537,12 @@ h2.login__title {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  gap: 0.7rem;
 }
 
 .modal__worksblock {
   position: relative;
   width: 20%;
-  margin-right: 0.3rem;
-  margin-bottom: 0.5rem;
 }
 
 .moveiconcontainer,
@@ -562,6 +575,10 @@ h2.login__title {
   left: 71%;
 }
 
+.modal__worksblock {
+  width: 20%;
+}
+
 .modal__worksblock p {
   font-family: "Work Sans";
   font-style: normal;
@@ -572,6 +589,7 @@ h2.login__title {
 
 .modal__image {
   width: 100%;
+  height: 100%;
 }
 
 .modal__separator {
