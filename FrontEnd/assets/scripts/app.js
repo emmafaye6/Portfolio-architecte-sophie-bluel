@@ -5,6 +5,7 @@ fetch("http://localhost:5678/api/works")
     return res.json();
   })
   .then((data) => {
+    // checking that if user is logged in, more buttons will appear
     let userElements = document.querySelectorAll(".userelements--hidden");
     const logoutLink = document.querySelector(".logout");
     const loginLink = document.querySelector(".login");
@@ -16,6 +17,7 @@ fetch("http://localhost:5678/api/works")
       loginLink.classList.add("login--hidden");
       logoutLink.classList.remove("logout--hidden");
     }
+
     //IMAGES AND CAPTIONS GENERATION
 
     // foreach loop will run through every object of the array
@@ -194,11 +196,11 @@ fetch("http://localhost:5678/api/works")
 
       const newImage = document.querySelector("#newimage");
       const newTitle = document.querySelector("#newtitle");
-
       const newCategory = document.querySelector("#newcategory");
 
       const data = new FormData();
 
+      // data sent to API will be field values
       data.append("image", newImage.files[0]);
       data.append("title", newTitle.value);
       data.append("category", newCategory.value);

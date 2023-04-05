@@ -531,7 +531,7 @@ h2.login__title {
 }
 
 .modal__workscontainer {
-  width: 70%;
+  width: 80%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -573,10 +573,6 @@ h2.login__title {
 
 .trashcancontainer {
   left: 71%;
-}
-
-.modal__worksblock {
-  width: 20%;
 }
 
 .modal__worksblock p {

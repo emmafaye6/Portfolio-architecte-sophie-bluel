@@ -4,10 +4,8 @@ fetch("http://localhost:5678/api/categories")
     return res.json();
   })
   .then((categories) => {
-    let buttonsContainer = document.querySelector(".buttons__container");
-
     // creating as many buttons as there are categories
-
+    let buttonsContainer = document.querySelector(".buttons__container");
     categories.forEach((category) => {
       let button = document.createElement("a");
       button.classList.add("button");
@@ -44,7 +42,6 @@ fetch("http://localhost:5678/api/categories")
       });
     });
 
-    //
     const buttonList = document.querySelectorAll(".button");
 
     // removes active class from buttons that should not be active
