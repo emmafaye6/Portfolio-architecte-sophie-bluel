@@ -66,9 +66,12 @@ fetch("http://localhost:5678/api/works")
       });
     }
     //opening modal on click on modify button
-    const modifyButton = document.querySelector(".modifybutton");
-    modifyButton.addEventListener("click", (event) => {
-      modals();
+    const modifyButton = document.querySelectorAll(".modifybutton");
+
+    modifyButton.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        modals();
+      });
     });
 
     //opening modal on click on other modify button
