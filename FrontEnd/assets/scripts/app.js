@@ -78,12 +78,7 @@ fetch("http://localhost:5678/api/works")
       cross.addEventListener("click", (event) => {
         secondModal.classList.add("secondmodal__content--hidden");
         modal.classList.add("modal--hidden");
-        title.value = "";
-        category.value = "";
-        image.classList.add("--hidden");
-        placeholderIcon.classList.remove("--hidden");
-        blueButton.classList.remove("--hidden");
-        description.classList.remove("--hidden");
+        resetItems();
       });
     });
 
@@ -146,16 +141,20 @@ fetch("http://localhost:5678/api/works")
 
     const arrow = document.querySelector(".secondmodal__arrow");
 
-    arrow.addEventListener("click", (event) => {
-      secondModal.classList.add("secondmodal__content--hidden");
-      firstModal.classList.remove("modal__content--hidden");
-
+    function resetItems() {
       title.value = "";
       category.value = "";
       image.classList.add("--hidden");
       placeholderIcon.classList.remove("--hidden");
       blueButton.classList.remove("--hidden");
       description.classList.remove("--hidden");
+    }
+
+    arrow.addEventListener("click", (event) => {
+      secondModal.classList.add("secondmodal__content--hidden");
+      firstModal.classList.remove("modal__content--hidden");
+
+      resetItems();
     });
 
     // making logout buton functional
@@ -239,15 +238,19 @@ fetch("http://localhost:5678/api/works")
       })
         .then((response) => response.json())
         .then((data) => {
-          let title = data.title;
-          let url = data.imageUrl;
-          let category = data.categoryId;
+          secondModal.classList.add("secondmodal__content--hidden");
+          modal.classList.add("modal--hidden");
 
-          const newWorks = `<div class="worksblock" data-category-id="${category}"><figure><img src="${url}"/></figure><figcaption>${title}</figcaption></div>`;
+          resetItems();
+
+          let newTitle = data.title;
+          let newUrl = data.imageUrl;
+          let newCategory = data.categoryId;
+
+          const newWorks = `<div class="worksblock" data-category-id="${newCategory}"><figure><img src="${newUrl}"/></figure><figcaption>${newTitle}</figcaption></div>`;
 
           let gallery = document.querySelector(".gallery");
           gallery.insertAdjacentHTML("beforeend", newWorks);
-        })
-        .catch(error);
+        });
     });
   });
