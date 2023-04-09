@@ -19,14 +19,12 @@ form.addEventListener("submit", (e) => {
         // checking wether there is already the right token
         // if there isn't, the token will be saved to local storage
         localStorage.setItem("token", data.token);
-        console.log("logged in");
+
         // redirecting user to homepage
         window.location.href = "/Frontend/index.html";
       } else {
         window.alert("Erreur dans l’identifiant ou le mot de passe");
       }
     })
-    .catch((error) => {
-      console.error("error");
-    });
+    .catch(error);
 });

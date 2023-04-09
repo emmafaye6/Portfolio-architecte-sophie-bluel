@@ -44,7 +44,7 @@ fetch("http://localhost:5678/api/works")
       const moveIcon = `<div class="moveiconcontainer"><i class="fa-solid fa-arrows-up-down-left-right fa-xs fa-1x" style="color:white"></i></div>`;
       const trashIcon = `<div class="trashcancontainer" data-id="${works.id}"><i class="fa-solid fa-trash-can modal__worksblock--icon1 fa-xs fa-1x" style="color:white"></i></div>`;
 
-      const modalWorksBlock = `<div class="modal__worksblock">${modalImages}${moveIcon}${trashIcon}${modalImagesCaption}</div>`;
+      const modalWorksBlock = `<div class="modal__worksblock" data-id="${works.id}">${modalImages}${moveIcon}${trashIcon}${modalImagesCaption}</div>`;
 
       document
         .querySelector(".modal__workscontainer")
@@ -52,24 +52,16 @@ fetch("http://localhost:5678/api/works")
     });
 
     // creating the function that will take place on click
-
+    const modal = document.querySelector(".modal");
     function modals() {
-      const modal = document.querySelector(".modal");
       modal.classList.remove("modal--hidden");
-
-      const modalCross = document.querySelectorAll(".modal__closebutton");
-
-      modalCross.forEach((cross) => {
-        cross.addEventListener("click", (event) => {
-          modal.classList.add("modal--hidden");
-        });
-      });
     }
     //opening modal on click on modify button
     const modifyButton = document.querySelectorAll(".modifybutton");
 
     modifyButton.forEach((button) => {
       button.addEventListener("click", (event) => {
+        firstModal.classList.remove("modal__content--hidden");
         modals();
       });
     });
@@ -80,12 +72,35 @@ fetch("http://localhost:5678/api/works")
       modals();
     });
 
+    //closing modal on click on cross
+    const modalCross = document.querySelectorAll(".modal__closebutton");
+    modalCross.forEach((cross) => {
+      cross.addEventListener("click", (event) => {
+        secondModal.classList.add("secondmodal__content--hidden");
+        modal.classList.add("modal--hidden");
+        title.value = "";
+        category.value = "";
+        image.classList.add("--hidden");
+        placeholderIcon.classList.remove("--hidden");
+        blueButton.classList.remove("--hidden");
+        description.classList.remove("--hidden");
+      });
+    });
+
     //modal closes whenever clicking out of it
     window.onclick = (event) => {
       const modalContainer = document.querySelector(".modal");
       const modal = document.querySelector(".modal__content");
+
       if (event.target.contains(modal) && event.target !== modal) {
+        secondModal.classList.add("secondmodal__content--hidden");
         modalContainer.classList.add("modal--hidden");
+        title.value = "";
+        category.value = "";
+        image.classList.add("--hidden");
+        placeholderIcon.classList.remove("--hidden");
+        blueButton.classList.remove("--hidden");
+        description.classList.remove("--hidden");
       }
     };
 
@@ -96,6 +111,7 @@ fetch("http://localhost:5678/api/works")
 
     trashButtons.forEach((button) => {
       button.addEventListener("click", (event) => {
+        event.preventDefault();
         fetch(`http://localhost:5678/api/works/${button.dataset.id}`, {
           method: "DELETE",
           headers: {
@@ -104,9 +120,6 @@ fetch("http://localhost:5678/api/works")
           },
         }).then((response) => {
           if (response.ok) {
-            console.log("response is ok");
-          } else {
-            console.log("response is not ok");
           }
         });
       });
@@ -117,6 +130,11 @@ fetch("http://localhost:5678/api/works")
     const addContent = document.querySelector(".modal__button");
     const firstModal = document.querySelector(".modal__content");
     const secondModal = document.querySelector(".secondmodalcontent");
+
+    let title = document.querySelector("#newtitle");
+    let category = document.querySelector("#newcategory");
+    let image = document.querySelector(".image-upload");
+    let blueButton = document.querySelector(".secondmodal__buttoncontainer");
 
     addContent.addEventListener("click", (event) => {
       event.preventDefault();
@@ -131,6 +149,13 @@ fetch("http://localhost:5678/api/works")
     arrow.addEventListener("click", (event) => {
       secondModal.classList.add("secondmodal__content--hidden");
       firstModal.classList.remove("modal__content--hidden");
+
+      title.value = "";
+      category.value = "";
+      image.classList.add("--hidden");
+      placeholderIcon.classList.remove("--hidden");
+      blueButton.classList.remove("--hidden");
+      description.classList.remove("--hidden");
     });
 
     // making logout buton functional
@@ -176,10 +201,6 @@ fetch("http://localhost:5678/api/works")
 
     const submitButton = document.querySelector(".sendbutton");
 
-    let title = document.querySelector("#newtitle");
-    let category = document.querySelector("#newcategory");
-    let image = document.querySelector(".image-upload");
-
     submitButton.addEventListener("click", (event) => {
       event.preventDefault();
 
@@ -217,6 +238,16 @@ fetch("http://localhost:5678/api/works")
         body: data,
       })
         .then((response) => response.json())
-        .catch((error) => console.log(error));
+        .then((data) => {
+          let title = data.title;
+          let url = data.imageUrl;
+          let category = data.categoryId;
+
+          const newWorks = `<div class="worksblock" data-category-id="${category}"><figure><img src="${url}"/></figure><figcaption>${title}</figcaption></div>`;
+
+          let gallery = document.querySelector(".gallery");
+          gallery.insertAdjacentHTML("beforeend", newWorks);
+        })
+        .catch(error);
     });
   });

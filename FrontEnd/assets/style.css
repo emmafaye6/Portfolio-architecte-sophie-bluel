@@ -191,6 +191,9 @@ li:hover,
 .logout--hidden {
   display: none;
 }
+.logout {
+  cursor: pointer;
+}
 #introduction {
   display: flex;
   width: 80%;
@@ -608,7 +611,6 @@ h2.login__title {
   text-decoration: none;
   font-family: "Syne";
   font-style: normal;
-  cursor: pointer;
   margin-bottom: 1.5rem;
   text-align: center;
   border: none;
@@ -616,6 +618,7 @@ h2.login__title {
 
 .modal__button {
   background: #1d6154;
+  cursor: pointer;
 }
 
 .sendbutton {
@@ -624,6 +627,7 @@ h2.login__title {
 
 .sendbutton--active {
   background-color: #1d6154;
+  cursor: pointer;
 }
 
 .modal__deletelink {
