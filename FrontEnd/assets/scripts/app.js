@@ -238,19 +238,24 @@ fetch("http://localhost:5678/api/works")
       })
         .then((response) => response.json())
         .then((data) => {
+          const zeTrash = `<div class="trashcancontainer" data-id="${data.id}"><i class="fa-solid fa-trash-can modal__worksblock--icon1 fa-xs fa-1x" style="color:white"></i></div>`;
+          const zeMove = `<div class="moveiconcontainer"><i class="fa-solid fa-arrows-up-down-left-right fa-xs fa-1x" style="color:white"></i></div>`;
+          const zeCaption = `<p>${"éditer"}</p>`;
           secondModal.classList.add("secondmodal__content--hidden");
           modal.classList.add("modal--hidden");
 
           resetItems();
 
-          let newTitle = data.title;
-          let newUrl = data.imageUrl;
-          let newCategory = data.categoryId;
-
-          const newWorks = `<div class="worksblock" data-category-id="${newCategory}"><figure><img src="${newUrl}"/></figure><figcaption>${newTitle}</figcaption></div>`;
-
+          const newWorks = `<div class="worksblock" data-category-id="${data.categoryId}"><figure><img src="${data.imageUrl}"/></figure><figcaption>${data.title}</figcaption></div>`;
           let gallery = document.querySelector(".gallery");
           gallery.insertAdjacentHTML("beforeend", newWorks);
+
+          const deleteGallery = document.getElementById(
+            "modal__workscontainer"
+          );
+          let deleteGalleryWorks = `<div class="modal__worksblock" data-id="${data.id}"><img class="modal__image" src="${data.imageUrl}"/>${zeMove}${zeTrash}${zeCaption}</div>`;
+
+          deleteGallery.insertAdjacentHTML("beforeend", deleteGalleryWorks);
         });
     });
   });
