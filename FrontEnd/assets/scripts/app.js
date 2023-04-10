@@ -118,20 +118,14 @@ fetch("http://localhost:5678/api/works")
             secondModal.classList.add("secondmodal__content--hidden");
             modal.classList.add("modal--hidden");
 
-            // const smallGallery = document.getElementById(
-            //   "modal__workscontainer"
-            // );
-
-            // const smallDeletedWork = `<div class="modal__worksblock" data-id="${button.dataset.id}"></div>`;
-            // const convert = new DOMParser().parseFromString(
-            //   smallDeletedWork,
-            //   "text/xml"
-            // );
+            let smallDeletedWork = document.querySelector(
+              `.modal__worksblock[data-id="${button.dataset.id}"]`
+            );
+            smallDeletedWork.remove();
           }
         });
       });
     });
-
     // change modal content on click on the add picture button
 
     const addContent = document.querySelector(".modal__button");
