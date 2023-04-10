@@ -60,7 +60,7 @@ fetch("http://localhost:5678/api/works")
     const modifyButton = document.querySelectorAll(".modifybutton");
 
     modifyButton.forEach((button) => {
-      button.addEventListener("click", (event) => {
+      button.addEventListener("click", () => {
         firstModal.classList.remove("modal__content--hidden");
         modals();
       });
@@ -68,14 +68,14 @@ fetch("http://localhost:5678/api/works")
 
     //opening modal on click on other modify button
     const headerModify = document.querySelector(".portfolio__header--modify");
-    headerModify.addEventListener("click", (event) => {
+    headerModify.addEventListener("click", () => {
       modals();
     });
 
     //closing modal on click on cross
     const modalCross = document.querySelectorAll(".modal__closebutton");
     modalCross.forEach((cross) => {
-      cross.addEventListener("click", (event) => {
+      cross.addEventListener("click", () => {
         secondModal.classList.add("secondmodal__content--hidden");
         modal.classList.add("modal--hidden");
         resetItems();
@@ -115,6 +115,18 @@ fetch("http://localhost:5678/api/works")
           },
         }).then((response) => {
           if (response.ok) {
+            secondModal.classList.add("secondmodal__content--hidden");
+            modal.classList.add("modal--hidden");
+
+            // const smallGallery = document.getElementById(
+            //   "modal__workscontainer"
+            // );
+
+            // const smallDeletedWork = `<div class="modal__worksblock" data-id="${button.dataset.id}"></div>`;
+            // const convert = new DOMParser().parseFromString(
+            //   smallDeletedWork,
+            //   "text/xml"
+            // );
           }
         });
       });
@@ -150,7 +162,7 @@ fetch("http://localhost:5678/api/works")
       description.classList.remove("--hidden");
     }
 
-    arrow.addEventListener("click", (event) => {
+    arrow.addEventListener("click", () => {
       secondModal.classList.add("secondmodal__content--hidden");
       firstModal.classList.remove("modal__content--hidden");
 
@@ -238,9 +250,10 @@ fetch("http://localhost:5678/api/works")
       })
         .then((response) => response.json())
         .then((data) => {
-          const zeTrash = `<div class="trashcancontainer" data-id="${data.id}"><i class="fa-solid fa-trash-can modal__worksblock--icon1 fa-xs fa-1x" style="color:white"></i></div>`;
-          const zeMove = `<div class="moveiconcontainer"><i class="fa-solid fa-arrows-up-down-left-right fa-xs fa-1x" style="color:white"></i></div>`;
-          const zeCaption = `<p>${"éditer"}</p>`;
+          const postTrash = `<div class="trashcancontainer" data-id="${data.id}"><i class="fa-solid fa-trash-can modal__worksblock--icon1 fa-xs fa-1x" style="color:white"></i></div>`;
+          const postMove = `<div class="moveiconcontainer"><i class="fa-solid fa-arrows-up-down-left-right fa-xs fa-1x" style="color:white"></i></div>`;
+          const postCaption = `<p>${"éditer"}</p>`;
+
           secondModal.classList.add("secondmodal__content--hidden");
           modal.classList.add("modal--hidden");
 
@@ -253,9 +266,8 @@ fetch("http://localhost:5678/api/works")
           const deleteGallery = document.getElementById(
             "modal__workscontainer"
           );
-          let deleteGalleryWorks = `<div class="modal__worksblock" data-id="${data.id}"><img class="modal__image" src="${data.imageUrl}"/>${zeMove}${zeTrash}${zeCaption}</div>`;
-
-          deleteGallery.insertAdjacentHTML("beforeend", deleteGalleryWorks);
+          let smallGalleryWorks = `<div class="modal__worksblock" data-id="${data.id}"><img class="modal__image" src="${data.imageUrl}"/>${postMove}${postTrash}${postCaption}</div>`;
+          deleteGallery.insertAdjacentHTML("beforeend", smallGalleryWorks);
         });
     });
   });
