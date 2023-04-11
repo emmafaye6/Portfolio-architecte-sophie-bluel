@@ -31,7 +31,7 @@ fetch("http://localhost:5678/api/works")
       // container and add it at the end of the gallery div
       // i tell the browser to insert it before the end of the closing tag
 
-      const worksBlock = `<div class="worksblock" data-category-id="${works.categoryId}">${images}${worksCaption}</div>`;
+      const worksBlock = `<div class="worksblock" data-category-id="${works.categoryId}" data-id="${works.id}">${images}${worksCaption}</div>`;
       document
         .querySelector(".gallery")
         .insertAdjacentHTML("beforeend", worksBlock);
@@ -121,12 +121,19 @@ fetch("http://localhost:5678/api/works")
             let smallDeletedWork = document.querySelector(
               `.modal__worksblock[data-id="${button.dataset.id}"]`
             );
+
+            let deletedWork = document.querySelector(
+              `.worksblock[data-id="${button.dataset.id}"]`
+            );
+
             smallDeletedWork.remove();
+            deletedWork.remove();
           }
         });
       });
     });
-    // change modal content on click on the add picture button
+
+    // switches to second modal on button click
 
     const addContent = document.querySelector(".modal__button");
     const firstModal = document.querySelector(".modal__content");
@@ -145,7 +152,7 @@ fetch("http://localhost:5678/api/works")
 
     // back to first modal on arrow click
 
-    const arrow = document.querySelector(".secondmodal__arrow");
+    // this function resets all changed items on close or post
 
     function resetItems() {
       title.value = "";
@@ -154,8 +161,10 @@ fetch("http://localhost:5678/api/works")
       placeholderIcon.classList.remove("--hidden");
       blueButton.classList.remove("--hidden");
       description.classList.remove("--hidden");
+      button.classList.remove("sendbutton--active");
     }
 
+    const arrow = document.querySelector(".secondmodal__arrow");
     arrow.addEventListener("click", () => {
       secondModal.classList.add("secondmodal__content--hidden");
       firstModal.classList.remove("modal__content--hidden");
@@ -208,7 +217,6 @@ fetch("http://localhost:5678/api/works")
 
     submitButton.addEventListener("click", (event) => {
       event.preventDefault();
-
       // ensuring that all field are completed before user can send form
       if (
         title.value == "" ||
@@ -216,52 +224,52 @@ fetch("http://localhost:5678/api/works")
         image.classList.contains("--hidden")
       ) {
         alert("L'un des champs est vide");
-      }
-
-      const categorySelector = document.querySelector(".secondmodal__input");
-      categorySelector.addEventListener("click", (event) => {
-        event.preventDefault();
-      });
-
-      const newImage = document.querySelector("#newimage");
-      const newTitle = document.querySelector("#newtitle");
-      const newCategory = document.querySelector("#newcategory");
-
-      const data = new FormData();
-
-      // data sent to API will be field values
-      data.append("image", newImage.files[0]);
-      data.append("title", newTitle.value);
-      data.append("category", newCategory.value);
-
-      fetch("http://localhost:5678/api/works", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: data,
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          const postTrash = `<div class="trashcancontainer" data-id="${data.id}"><i class="fa-solid fa-trash-can modal__worksblock--icon1 fa-xs fa-1x" style="color:white"></i></div>`;
-          const postMove = `<div class="moveiconcontainer"><i class="fa-solid fa-arrows-up-down-left-right fa-xs fa-1x" style="color:white"></i></div>`;
-          const postCaption = `<p>${"éditer"}</p>`;
-
-          secondModal.classList.add("secondmodal__content--hidden");
-          modal.classList.add("modal--hidden");
-
-          resetItems();
-
-          const newWorks = `<div class="worksblock" data-category-id="${data.categoryId}"><figure><img src="${data.imageUrl}"/></figure><figcaption>${data.title}</figcaption></div>`;
-          let gallery = document.querySelector(".gallery");
-          gallery.insertAdjacentHTML("beforeend", newWorks);
-
-          const deleteGallery = document.getElementById(
-            "modal__workscontainer"
-          );
-          let smallGalleryWorks = `<div class="modal__worksblock" data-id="${data.id}"><img class="modal__image" src="${data.imageUrl}"/>${postMove}${postTrash}${postCaption}</div>`;
-          deleteGallery.insertAdjacentHTML("beforeend", smallGalleryWorks);
+      } else {
+        const categorySelector = document.querySelector(".secondmodal__input");
+        categorySelector.addEventListener("click", (event) => {
+          event.preventDefault();
         });
+
+        const newImage = document.querySelector("#newimage");
+        const newTitle = document.querySelector("#newtitle");
+        const newCategory = document.querySelector("#newcategory");
+
+        const data = new FormData();
+
+        // data sent to API will be field values
+        data.append("image", newImage.files[0]);
+        data.append("title", newTitle.value);
+        data.append("category", newCategory.value);
+
+        fetch("http://localhost:5678/api/works", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: data,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            const postTrash = `<div class="trashcancontainer" data-id="${data.id}"><i class="fa-solid fa-trash-can modal__worksblock--icon1 fa-xs fa-1x" style="color:white"></i></div>`;
+            const postMove = `<div class="moveiconcontainer"><i class="fa-solid fa-arrows-up-down-left-right fa-xs fa-1x" style="color:white"></i></div>`;
+            const postCaption = `<p>${"éditer"}</p>`;
+
+            secondModal.classList.add("secondmodal__content--hidden");
+            modal.classList.add("modal--hidden");
+
+            resetItems();
+
+            const newWorks = `<div class="worksblock" data-category-id="${data.categoryId}"><figure><img src="${data.imageUrl}"/></figure><figcaption>${data.title}</figcaption></div>`;
+            let gallery = document.querySelector(".gallery");
+            gallery.insertAdjacentHTML("beforeend", newWorks);
+
+            const deleteGallery = document.getElementById(
+              "modal__workscontainer"
+            );
+            let smallGalleryWorks = `<div class="modal__worksblock" data-id="${data.id}"><img class="modal__image" src="${data.imageUrl}"/>${postMove}${postTrash}${postCaption}</div>`;
+            deleteGallery.insertAdjacentHTML("beforeend", smallGalleryWorks);
+          });
+      }
     });
   });
