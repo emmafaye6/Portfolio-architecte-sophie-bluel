@@ -26,5 +26,7 @@ form.addEventListener("submit", (e) => {
         window.alert("Erreur dans l’identifiant ou le mot de passe");
       }
     })
-    .catch(error);
+    .catch((error) => {
+      console.error(error);
+    });
 });

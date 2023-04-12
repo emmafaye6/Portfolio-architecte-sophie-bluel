@@ -131,7 +131,9 @@ fetch("http://localhost:5678/api/works")
               deletedWork.remove();
             }
           })
-          .catch(error);
+          .catch((error) => {
+            console.error(error);
+          });
       });
     });
 
@@ -272,7 +274,9 @@ fetch("http://localhost:5678/api/works")
             let smallGalleryWorks = `<div class="modal__worksblock" data-id="${data.id}"><img class="modal__image" src="${data.imageUrl}"/>${postMove}${postTrash}${postCaption}</div>`;
             deleteGallery.insertAdjacentHTML("beforeend", smallGalleryWorks);
           })
-          .catch(error);
+          .catch((error) => {
+            console.error(error);
+          });
       }
     });
   });
