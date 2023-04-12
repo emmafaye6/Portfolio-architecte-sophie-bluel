@@ -113,23 +113,25 @@ fetch("http://localhost:5678/api/works")
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-        }).then((response) => {
-          if (response.ok) {
-            secondModal.classList.add("secondmodal__content--hidden");
-            modal.classList.add("modal--hidden");
+        })
+          .then((response) => {
+            if (response.ok) {
+              secondModal.classList.add("secondmodal__content--hidden");
+              modal.classList.add("modal--hidden");
 
-            let smallDeletedWork = document.querySelector(
-              `.modal__worksblock[data-id="${button.dataset.id}"]`
-            );
+              let smallDeletedWork = document.querySelector(
+                `.modal__worksblock[data-id="${button.dataset.id}"]`
+              );
 
-            let deletedWork = document.querySelector(
-              `.worksblock[data-id="${button.dataset.id}"]`
-            );
+              let deletedWork = document.querySelector(
+                `.worksblock[data-id="${button.dataset.id}"]`
+              );
 
-            smallDeletedWork.remove();
-            deletedWork.remove();
-          }
-        });
+              smallDeletedWork.remove();
+              deletedWork.remove();
+            }
+          })
+          .catch(error);
       });
     });
 
@@ -269,7 +271,8 @@ fetch("http://localhost:5678/api/works")
             );
             let smallGalleryWorks = `<div class="modal__worksblock" data-id="${data.id}"><img class="modal__image" src="${data.imageUrl}"/>${postMove}${postTrash}${postCaption}</div>`;
             deleteGallery.insertAdjacentHTML("beforeend", smallGalleryWorks);
-          });
+          })
+          .catch(error);
       }
     });
   });

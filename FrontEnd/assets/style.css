@@ -140,8 +140,13 @@ header {
   margin: 50px 0;
   padding: 0 7rem;
 }
+
 section {
   margin: 50px 0;
+}
+
+.--uppercase {
+  text-transform: uppercase;
 }
 
 h1 {
@@ -151,6 +156,15 @@ h1 {
   font-size: 22px;
   font-weight: 800;
   color: #b1663c;
+}
+
+.header__homelink {
+  color: inherit;
+  text-decoration: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  margin-bottom: 0.3rem;
 }
 
 h1 > span {
